@@ -1,0 +1,89 @@
+
+:root {
+  --black:#0A0A0A;
+  --deep-black:#000;
+  --white:#ffffff;
+  --saranor-blue:#1A4FFF;
+  --slate:#f4f6fa;
+  --radius:14px;
+  --transition:0.35s ease;
+  --shadow:0 8px 24px rgba(0,0,0,0.08);
+  --max-width:1250px;
+  --font: 'Inter', system-ui, sans-serif;
+}
+body {margin:0; font-family:var(--font); background:var(--white); color:#111;}
+h1,h2,h3,h4 {font-weight:700; letter-spacing:-0.5px;}
+.section {
+  padding: 64px 0;
+padding:90px 0; border-bottom:1px solid #eee;}
+.container {max-width:var(--max-width); margin:0 auto; padding:0 28px;}
+.btn-primary {background:var(--deep-black); color:#fff; padding:16px 32px; border-radius:var(--radius); text-decoration:none; display:inline-block; transition:var(--transition);}
+.btn-primary:hover {background:var(--saranor-blue);}
+.btn-outline {border:2px solid var(--deep-black); padding:14px 30px; border-radius:var(--radius); text-decoration:none; color:#000; display:inline-block; transition:var(--transition);}
+.btn-outline:hover {border-color:var(--saranor-blue); color:var(--saranor-blue);}
+
+/* Contact form layout improvements */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.form-grid textarea {
+  grid-column: span 2;
+}
+@media (max-width: 768px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+.form-actions {
+  text-align: right;
+  margin-top: 24px;
+}
+
+body { background-color: #F5F8FF; }
+
+/* SaaS density reset */
+.section { padding: 40px 0; }
+.hero { padding: 56px 0; }
+
+body { background-color: #EEF3FF; }
+
+/* Modern SaaS form */
+.saas-form {
+  max-width: 640px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+.saas-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #333;
+}
+.saas-form input,
+.saas-form textarea {
+  margin-top: 6px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d0d7e2;
+  font-size: 15px;
+}
+.saas-form input:focus,
+.saas-form textarea:focus {
+  outline: none;
+  border-color: #3F7CFF;
+}
+.saas-form button {
+  margin-top: 12px;
+  align-self: flex-end;
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+/* Normalize nav/footer link styling everywhere */
+nav a, footer a {
+  color: inherit;
+  text-decoration: none;
+}
+nav a:hover, footer a:hover {
+  text-decoration: underline;
+}

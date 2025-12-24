@@ -1,0 +1,6 @@
+
+.nav {padding:22px 0; border-bottom:1px solid #eee; background:#fff; backdrop-filter:blur(12px); position:sticky; top:0; z-index:100;}
+.nav-container {display:flex; justify-content:space-between; align-items:center; max-width:var(--max-width); margin:auto; padding:0 28px;}
+.nav-brand {font-size:24px; font-weight:800; letter-spacing:-1px;}
+.nav-links a {margin-left:24px; text-decoration:none; color:#000; font-weight:500; position:relative;}
+.nav-links a.active::after {content:''; position:absolute; bottom:-6px; left:0; width:100%; height:2px; background:var(--saranor-blue);}

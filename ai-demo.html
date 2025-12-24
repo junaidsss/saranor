@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Saranor AI — Live Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 720px;
+      width: 100%;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    p.sub {
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 90px;
+      background: #020617;
+      color: #e5e7eb;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 15px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 12px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background: #475569;
+      cursor: not-allowed;
+    }
+
+    .response {
+      margin-top: 28px;
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 16px;
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 40px;
+      color: #64748b;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Saranor AI — Live Demo</h1>
+    <p class="sub">
+      Ask a business question about AI, analytics, or automation.
+      This demo simulates how Saranor Technologies supports clients.
+    </p>
+
+    <textarea id="message" placeholder="How can AI help improve my business operations?"></textarea>
+    <br />
+    <button id="sendBtn" onclick="sendMessage()">Ask Saranor AI</button>
+
+    <div id="response" class="response" style="display:none;"></div>
+
+    <div class="footer">
+      © Saranor Technologies · Demo environment · Responses may be simulated
+    </div>
+  </div>
+
+  <script>
+    async function sendMessage() {
+      const msgBox = document.getElementById("message");
+      const responseBox = document.getElementById("response");
+      const btn = document.getElementById("sendBtn");
+
+      const message = msgBox.value.trim();
+      if (!message) return;
+
+      btn.disabled = true;
+      btn.textContent = "Thinking…";
+      responseBox.style.display = "none";
+
+      try {
+        const res = await fetch(
+          "https://saranor-demo-backend-production.up.railway.app/chat",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message })
+          }
+        );
+
+        const data = await res.json();
+        responseBox.textContent = data.reply || "No response received.";
+        responseBox.style.display = "block";
+      } catch (err) {
+        responseBox.textContent = "An error occurred. Please try again.";
+        responseBox.style.display = "block";
+      }
+
+      btn.disabled = false;
+      btn.textContent = "Ask Saranor AI";
+    }
+  </script>
+</body>
+</html>

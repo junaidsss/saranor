@@ -1,0 +1,33 @@
+
+.grid-3 {display:grid; grid-template-columns:repeat(3,1fr); gap:32px;}
+.grid-4 {display:grid; grid-template-columns:repeat(4,1fr); gap:32px;}
+.grid-2 {display:grid; grid-template-columns:repeat(2,1fr); gap:32px;}
+.long-text {max-width:860px; line-height:1.75; font-size:18px;}
+.center {text-align:center;}
+.mt-3 {margin-top:32px;}
+
+
+
+/* ===============================
+   INSIGHTS CTA (Center alignment)
+=============================== */
+.section-cta {
+  padding: 72px 0;
+}
+
+.section-cta .cta-inner{
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-cta .cta-inner p{
+  margin: 14px auto 26px;
+  max-width: 760px;
+}
+
+.section-cta .cta-inner .btn-primary{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,40 @@
+
+.card-box {
+  border:1px solid #e6e6e6;
+  padding:32px;
+  border-radius:var(--radius);
+  background:#fff;
+  box-shadow:var(--shadow);
+  transition:var(--transition);
+}
+.card-box:hover {transform:translateY(-6px); box-shadow:0 12px 30px rgba(0,0,0,0.12);}
+.card-minimal {
+  border:2px solid var(--deep-black);
+  padding:24px;
+  text-align:center;
+  border-radius:var(--radius);
+  font-weight:600;
+  transition:var(--transition);
+}
+.card-minimal:hover {border-color:var(--saranor-blue); color:var(--saranor-blue);}
+
+
+
+/* ===============================
+   CARD LINK RESET (Fix blue/underline)
+=============================== */
+a.card-link,
+a.card-link:visited,
+a.card-link:hover,
+a.card-link:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+a.card-link { display:block; }
+a.card-link:focus { outline: 2px solid rgba(26,79,255,0.35); outline-offset: 3px; border-radius: 14px; }
+
+a.card-link:hover .card-box {
+  transform: translateY(-2px);
+  transition: transform 180ms ease;
+}
