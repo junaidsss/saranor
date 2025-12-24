@@ -171,18 +171,20 @@
                 }
             );
 
-            if (response.ok) {
-                status.textContent = "Thank you. Your message has been received.";
-                form.reset();
-            } else {
-                status.textContent = "Submission failed. Please try again.";
-            }
+            if (response.status === 200 || response.status === 202) {
+  status.textContent = "Thank you. Your message has been received.";
+  form.reset();
+} else {
+  status.textContent = "Submission failed. Please try again.";
+  console.error("Unexpected response status:", response.status);
+}
+
 
         } catch (err) {
-            status.textContent = "Network error. Please try again later.";
-        } finally {
-            submitBtn.disabled = false;
-        }
+  console.error("Network error:", err);
+  status.textContent = "Network error. Please try again later.";
+}
+
     });
 })();
 </script>
