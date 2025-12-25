@@ -60,8 +60,7 @@
             <h2>Tell Us About Your Project</h2>
             <p class="contact-sub">We typically respond within one business day.</p>
 
-            <button type="button" class="btn-primary" id="submitBtn">
-
+            <form id="contactForm" class="saas-form" novalidate>
 
                 <label>
                     Name
@@ -83,7 +82,7 @@
                     <textarea id="message" placeholder="Briefly describe your goals" required></textarea>
                 </label>
 
-                <!-- IMPORTANT: type="button" -->
+                <!-- IMPORTANT: button, not submit -->
                 <button type="button" class="btn-primary" id="submitBtn">
                     Submit
                 </button>
@@ -148,9 +147,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitBtn = document.getElementById("submitBtn");
 
     if (!form || !submitBtn) {
-        console.error("Contact form elements not found");
+        console.error("Contact form elements missing");
         return;
     }
+
+    // Hard block native submit (ENTER key, etc.)
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    });
 
     submitBtn.addEventListener("click", async () => {
         if (submitBtn.disabled) return;
