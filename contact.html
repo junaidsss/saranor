@@ -64,22 +64,22 @@
 
                 <label>
                     Name
-                    <input type="text" name="name" placeholder="Your full name" required>
+                    <input id="name" type="text" placeholder="Your full name" required>
                 </label>
 
                 <label>
                     Email
-                    <input type="email" name="email" placeholder="you@company.com" required>
+                    <input id="email" type="email" placeholder="you@company.com" required>
                 </label>
 
                 <label>
                     Organization
-                    <input type="text" name="organization" placeholder="Company or team name">
+                    <input id="organization" type="text" placeholder="Company or team name">
                 </label>
 
                 <label>
                     Project Overview
-                    <textarea name="message" placeholder="Briefly describe your goals" required></textarea>
+                    <textarea id="message" placeholder="Briefly describe your goals" required></textarea>
                 </label>
 
                 <button type="submit" class="btn-primary" id="submitBtn">
@@ -119,75 +119,3 @@
     <div class="cta-inner">
         <h2>Let’s Build Intelligent Systems Together</h2>
         <p>Our consulting team is ready to support your transformation.</p>
-        <a href="mailto:sales@saranor.ca" class="btn-primary">Contact Us</a>
-    </div>
-</section>
-
-<!-- =============================== -->
-<!-- FOOTER -->
-<!-- =============================== -->
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-brand">SARANOR</div>
-        <p class="footer-tag">Precision. Power. Intelligence.</p>
-    </div>
-    <div class="footer-bottom">
-        © 2025 Saranor Technologies. All rights reserved.
-    </div>
-</footer>
-
-<!-- =============================== -->
-<!-- POWER AUTOMATE INTEGRATION -->
-<!-- =============================== -->
-<script>
-(() => {
-    const form = document.getElementById("contactForm");
-    const status = document.getElementById("formStatus");
-    const submitBtn = document.getElementById("submitBtn");
-
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        if (submitBtn.disabled) return;
-
-        submitBtn.disabled = true;
-        status.textContent = "Submitting…";
-
-        const payload = {
-            name: form.name.value.trim(),
-            email: form.email.value.trim(),
-            organization: form.organization.value.trim(),
-            message: form.message.value.trim(),
-            page: window.location.pathname
-        };
-
-        try {
-            const response = await fetch(
-  "https://prod-07.westus2.logic.azure.com:443/workflows/56f4c38777944b46a38dfc0dd89cfc9b/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=tB2c0I_hd4k6DKJmOQyM2m8jmWYo0pGjJIkECRsncJw",
-
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload)
-                }
-            );
-
-            if (response.status === 200 || response.status === 202) {
-  status.textContent = "Thank you. Your message has been received.";
-  form.reset();
-} else {
-  status.textContent = "Submission failed. Please try again.";
-  console.error("Unexpected response status:", response.status);
-}
-
-
-        } catch (err) {
-  console.error("Network error:", err);
-  status.textContent = "Network error. Please try again later.";
-}
-
-    });
-})();
-</script>
-
-</body>
-</html>
